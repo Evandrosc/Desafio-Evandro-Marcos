@@ -1,4 +1,5 @@
-import { cardapio } from '../src/cardapio.js';
+import { cardapio } from './cardapio.js';
+import { formaDePagamento } from './forma-pagamento.js';
 
 class CaixaDaLanchonete {
     calcularValorDaCompra(metodoDePagamento, itens) {
@@ -7,7 +8,6 @@ class CaixaDaLanchonete {
             return 'Não há itens no carrinho de compra!';
         }
 
-        const formaDePagamento = ['dinheiro', 'debito', 'credito'];
         const pagamentoValido = formaDePagamento.includes(metodoDePagamento);
 
         if (!pagamentoValido) {

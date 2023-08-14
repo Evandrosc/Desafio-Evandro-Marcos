@@ -141,6 +141,17 @@ form.addEventListener('submit', event => {
   const caixa = new CaixaDaLanchonete();
   const valorDaCompra = caixa.calcularValorDaCompra(formaPagamentoSelecionada, itensDoPedido);
 
+
+  if (formaPagamentoSelecionada === dinheiroInput.value) {
+    dinheiroInput.checked = false;
+  }else if (formaPagamentoSelecionada === debitoInput.value) {
+    debitoInput.checked = false;
+  }else {
+    creditoInput.checked = false;
+  }
+
+  formaPagamentoSelecionada = '';
+
   const valorCompraErro = mensagemErros.some(erro => erro === valorDaCompra);
 
 
@@ -157,11 +168,6 @@ form.addEventListener('submit', event => {
     quantidadeElemento.innerText = 0;
   });
 
-  dinheiroInput.checked = false;
-  debitoInput.checked = false;
-  creditoInput.checked = false;
-
   mensagemResultado.setAttribute('class', 'mensagemResultadoSucesso')
   mensagemResultado.innerText = valorDaCompra;
-
 });
