@@ -5,34 +5,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cardapio.css">
+  <link rel="stylesheet" href="css/form.css">
+  <link rel="stylesheet" href="css/tabela.css">
+  <link rel="stylesheet" href="css/pagamento.css">
   <title>Caixa Lanchonete DB</title>
 </head>
 
 <body>
-  <h1>Cardápio da Lanchonete</h1>
+  <h1>Cardápio Lanchonete DB</h1>
   <section id="cardapio" class="cardapio"></section>
 
   <div class="container-form">
     <form id="formulario-pedido" class="formulario-pedido">
       <h2 class="titulo-pedido">Lista de pedido</h2>
 
-      <ul id="lista-pedido"></ul>
+      <table id="lista-pedido" class="lista-pedido">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantidade</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
 
-      <div>
-        <p>Escolha a forma de pagamento</p>
-        <input type="radio" name="forma-pagamento" id="dinheiro" value="dinheiro">
-        <label for="dinheiro">Dinheiro</label>
-        <input type="radio" name="forma-pagamento" id="debito" value="debito">
-        <label for="debito">Débito</label>
-        <input type="radio" name="forma-pagamento" id="credito" value="credito">
-        <label for="credito">Crédito</label>
+      <div class="container-forma-pagamento">
+        <h3>Escolha a forma de pagamento</h3>
+        <div>
+          <input type="radio" name="forma-pagamento" id="dinheiro" value="dinheiro">
+          <label for="dinheiro">Dinheiro</label>
+          <input type="radio" name="forma-pagamento" id="debito" value="debito">
+          <label for="debito">Débito</label>
+          <input type="radio" name="forma-pagamento" id="credito" value="credito">
+          <label for="credito">Crédito</label>
+        </div>
       </div>
-      
+
       <button type="submit" id="botao-enviar-pedido" class="botao-enviar-pedido">Enviar pedido</button>
 
       <div id="mensagem-resultado"></div>
     </form>
-  </div>  
+  </div>
   <script type="module" src="script.js"></script>
 </body>
 

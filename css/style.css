@@ -1,10 +1,12 @@
 :root {
+  --colorBody: #c1beba;
   --red: #ff0000;
   --hoverRed: #660000;
   --green: #008000;
   --hoverGreen: #015701;
-  --white: #ffffff;
-  --black: #000000;
+  --blackShadow: #00000048;
+  --cor1: #fdfefe;
+  --cor2: #003088;
 }
 
 * {
@@ -15,118 +17,11 @@
   outline: none;
 }
 
+body {
+  background-color: var(--colorBody);
+}
+
 h1 {
   text-align: center;
   margin: 1rem 0;
-}
- 
-.cardapio {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2vw;
-}
-
-.item-cardapio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .5rem;
-}
-
-.item-cardapio img {
-  border-radius: 20px;
-  box-shadow: 2px 2px 5px var(--black);
-}
-
-.item-cardapio h2 {
-  font-size: 1.1rem;
-}
-
-.container-quantidade {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-}
-
-.botao {
-  padding: 0 1rem;
-  font-size: 25px;
-  color: var(--white);
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: .3s;
-}
-
-.botaoMenos {
-  background-color: var(--red);
-}
-
-.botaoMenos:hover {
-  background-color: var(--hoverRed);
-}
-
-.botaoMais {
-  background-color: var(--green);
-}
-
-.botaoMais:hover {
-  background-color: var(--hoverGreen);
-}
-
-.container-form {
-  margin: 2rem;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.formulario-pedido {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .5rem;
-}
-
-.titulo-pedido {
-  font-weight: 700;
-  font-size: 2rem;
-}
-
-li {
-  color: var(--green);
-  font-weight: 600;
-  margin: .5rem 0;
-}
-
-.botao-enviar-pedido {
-  width: 10rem;
-  border: none;
-  border-radius: 10px;
-  padding: 1rem 0;
-  font-size: 1rem;
-  background-color: var(--green);
-  color: var(--white);
-  cursor: pointer;
-  transition: .3s;
-}
-
-.botao-enviar-pedido:hover {
-  background-color: var(--hoverGreen);
-}
-
-#mensagem-resultado {
-  font-weight: 600;
-  text-align: center;
-}
-
-.mensagemResultadoSucesso {
-  color: var(--green);
-  font-size: 1.3rem;
-}
-
-.mensagemResultadoErro {
-  color: red;
 }

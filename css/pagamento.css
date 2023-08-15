@@ -1,0 +1,19 @@
+.container-forma-pagamento {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-forma-pagamento div {
+  display: flex;
+  gap: .6rem;
+}
+
+.container-forma-pagamento h3 {
+  margin-bottom: .5rem;
+  font-size: 1.1rem;
+}
+
+.container-forma-pagamento label {
+  font-size: 1.1rem;
+}

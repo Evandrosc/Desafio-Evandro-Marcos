@@ -3,24 +3,36 @@ import { cardapio } from './src/cardapio.js';
 
 function adicionarNovoItem(quantidade, descricaoDoItem, codigoDoItem) {
   if (quantidade > 0) {
-    const li = document.createElement('li');
-    li.textContent = `${descricaoDoItem}, ${quantidade}`;
-    li.setAttribute('data-codigo', codigoDoItem);
-    li.setAttribute('data-quantidade', quantidade);
-    listaPedido.appendChild(li);
+    const newRow = document.createElement('tr');
+    const descricaoCell = document.createElement('td');
+    const quantidadeCell = document.createElement('td');
+
+    descricaoCell.textContent = descricaoDoItem;
+    quantidadeCell.textContent = quantidade;
+
+    newRow.appendChild(descricaoCell);
+    newRow.appendChild(quantidadeCell);
+
+    newRow.setAttribute('data-codigo', codigoDoItem);
+    newRow.setAttribute('data-quantidade', quantidade);
+
+    listaPedido.querySelector('tbody').appendChild(newRow);
   }
 
   mensagemResultado.innerText = '';
 }
 
 function atualizarItemExistenteOuRemover(itemIndex, quantidade, descricaoDoItem) {
-  const itemLi = listaPedido.querySelectorAll('li')[itemIndex];
+  const rows = listaPedido.querySelectorAll('tr');
+  const itemRow = rows[itemIndex];
 
   if (quantidade > 0) {
-    itemLi.textContent = `${descricaoDoItem}, ${quantidade}`;
-    itemLi.setAttribute('data-quantidade', quantidade);
+    const quantidadeCell = itemRow.querySelector('td:nth-child(2)');
+    quantidadeCell.textContent = quantidade;
+
+    itemRow.setAttribute('data-quantidade', quantidade);
   } else {
-    listaPedido.removeChild(itemLi);
+    listaPedido.querySelector('tbody').removeChild(itemRow);
   }
 
   mensagemResultado.innerText = '';
@@ -63,15 +75,20 @@ cardapio.forEach(item => {
   const divItem = document.createElement('div');
   divItem.classList.add('item-cardapio');
 
+  const itemExtra = item.extra ? 'img-extra' : '';
+
   divItem.innerHTML = `
-    <img src="${item.img}" alt="${item.descricao}">
-    <h2>${item.descricao}</h2>
-    <p>Valor: ${item.valor}</p>
+    <div class="container-img">
+      <img class="${itemExtra}" src="${item.img}" alt="${item.descricao}">
+      <h2>${item.descricao}</h2>
+    </div>
     <div class="container-quantidade">
-      <span>Un:</span>   
-      <button class="botao botaoMenos" data-operation="-">-</button>
-      <span id="quantidade" data-quantidade="0">0</span>
-      <button class="botao botaoMais" data-operation="+">+</button>
+      <p>${item.valor}</p>
+      <div class="container-botoes">
+        <button class="botao botaoMenos" data-operation="-">-</button>
+        <span id="quantidade" data-quantidade="0">0</span>
+        <button class="botao botaoMais" data-operation="+">+</button>
+      </div>
     </div>
   `;
 
@@ -80,13 +97,10 @@ cardapio.forEach(item => {
 
 cardapioSection.addEventListener('click', event => {
   const operacao = event.target.getAttribute('data-operation');
-
   const simboloMenos = '-';
   const simboloMais = '+';
 
-  const diferenteDeOperacao = operacao !== simboloMenos && operacao !== simboloMais;
-
-  if (diferenteDeOperacao) return;
+  if (operacao !== simboloMenos && operacao !== simboloMais) return;
 
   const quantidadeElemento = event.target.parentElement.querySelector('[data-quantidade]');
   const divItem = event.target.closest('.item-cardapio');
@@ -108,9 +122,8 @@ cardapioSection.addEventListener('click', event => {
   if (itemCardapio) {
     const codigoDoItem = itemCardapio.codigo;
 
-    const listaDeItens = Array.from(listaPedido.querySelectorAll('li'));
-
-    const itemIndex = listaDeItens.findIndex(li => li.getAttribute('data-codigo') === codigoDoItem);
+    const rows = listaPedido.querySelectorAll('tr');
+    const itemIndex = Array.from(rows).findIndex(row => row.getAttribute('data-codigo') === codigoDoItem);
 
     if (itemIndex >= 0) {
       atualizarItemExistenteOuRemover(itemIndex, quantidade, descricaoDoItem);
@@ -118,8 +131,8 @@ cardapioSection.addEventListener('click', event => {
       adicionarNovoItem(quantidade, descricaoDoItem, codigoDoItem);
     }
   }
-
 });
+
 
 armazenarFormaPagamento((formaDePagamento) => {
   formaPagamentoSelecionada = formaDePagamento;
@@ -128,46 +141,51 @@ armazenarFormaPagamento((formaDePagamento) => {
 form.addEventListener('submit', event => {
   event.preventDefault();
 
+  const tableBody = listaPedido.querySelector('tbody');
+
   const itensDoPedido = [];
+  
+  const rows = listaPedido.querySelectorAll('tr');
 
-  listaPedido.querySelectorAll('li').forEach(li => {
-    const codigoDoItem = li.getAttribute('data-codigo');
-    const quantidadeDoItem = li.getAttribute('data-quantidade');
-
-    const itemPedido = `${codigoDoItem},${quantidadeDoItem}`;
-    itensDoPedido.push(itemPedido);
+  rows.forEach(row => {
+    const codigoDoItem = row.getAttribute('data-codigo');
+    const quantidadeDoItem = row.getAttribute('data-quantidade');
+    if (codigoDoItem && quantidadeDoItem) {
+      const itemPedido = `${codigoDoItem},${quantidadeDoItem}`;
+      itensDoPedido.push(itemPedido);
+    }
   });
 
   const caixa = new CaixaDaLanchonete();
   const valorDaCompra = caixa.calcularValorDaCompra(formaPagamentoSelecionada, itensDoPedido);
 
-
-  if (formaPagamentoSelecionada === dinheiroInput.value) {
-    dinheiroInput.checked = false;
-  }else if (formaPagamentoSelecionada === debitoInput.value) {
-    debitoInput.checked = false;
-  }else {
-    creditoInput.checked = false;
-  }
-
-  formaPagamentoSelecionada = '';
-
   const valorCompraErro = mensagemErros.some(erro => erro === valorDaCompra);
-
 
   if (valorCompraErro) {
     mensagemResultado.setAttribute('class', 'mensagemResultadoErro');
     mensagemResultado.innerText = valorDaCompra;
-    return
+    return;
   }
 
-  listaPedido.innerText = '';
+  while (tableBody.firstChild) {
+    tableBody.removeChild(tableBody.firstChild);
+  }
+
+  if (formaPagamentoSelecionada === dinheiroInput.value) {
+    dinheiroInput.checked = false;
+  } else if (formaPagamentoSelecionada === debitoInput.value) {
+    debitoInput.checked = false;
+  } else {
+    creditoInput.checked = false;
+  }
+
+  formaPagamentoSelecionada = '';
 
   cardapioSection.querySelectorAll('#quantidade').forEach(quantidadeElemento => {
     quantidadeElemento.setAttribute('data-quantidade', 0);
     quantidadeElemento.innerText = 0;
   });
 
-  mensagemResultado.setAttribute('class', 'mensagemResultadoSucesso')
+  mensagemResultado.setAttribute('class', 'mensagemResultadoSucesso');
   mensagemResultado.innerText = valorDaCompra;
 });

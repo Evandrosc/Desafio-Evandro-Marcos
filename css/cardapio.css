@@ -1,0 +1,97 @@
+.cardapio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.item-cardapio {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: .7rem;
+  width: 30%;
+  background-color:  var(--cor1);
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  box-shadow: 1px 1px 10px var(--blackShadow);
+}
+
+.container-img {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: .7rem;
+}
+
+.container-img img {
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px var(--blackShadow);
+}
+
+.img-extra {
+  width: 10rem;
+}
+
+.container-img h2 {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+
+.container-quantidade {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container-quantidade p {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+
+.container-botoes {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.botao {
+  padding: 0 1rem;
+  font-size: 25px;
+  color: var(--cor1);
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: .3s;
+}
+
+.botaoMenos {
+  background-color: var(--red);
+}
+
+.botaoMenos:hover {
+  background-color: var(--hoverRed);
+}
+
+.botaoMais {
+  background-color: var(--green);
+}
+
+.botaoMais:hover {
+  background-color: var(--hoverGreen);
+}
+
+@media screen and (max-width: 1024px) {
+  .item-cardapio {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 661px) {
+  .item-cardapio {
+    width: 94%;
+  }
+}

@@ -1,0 +1,31 @@
+.lista-pedido {
+  border-collapse: separate;
+  border-spacing: 5px 0;
+  margin: 1rem 0;
+}
+
+.lista-pedido th {
+  background-color: var(--cor1);
+  padding: 10px;
+  text-align: center;
+}
+
+.lista-pedido th:nth-child(1) {
+  width: 15rem;
+}
+
+.lista-pedido tr {
+  background-color: var(--cor2);
+}
+
+.lista-pedido tr[data-codigo][data-quantidade] {
+  font-weight: bold;
+}
+
+
+.lista-pedido td {
+  padding: 10px;
+  border-bottom: 1px solid var(--cor1);
+  text-align: center;
+  color: var(--cor1);
+}
