@@ -1,4 +1,6 @@
-**Link de Deploy**: [https://evandrosc.github.io/Desafio-Evandro-Marcos/](https://evandrosc.github.io/Desafio-Evandro-Marcos/)
+# Deploy
+
+**Link**: [https://evandrosc.github.io/Desafio-Evandro-Marcos/](https://evandrosc.github.io/Desafio-Evandro-Marcos/){:target="_blank"}
 
 # Instruções para Executar o Projeto e Testes Localmente
 
@@ -8,7 +10,7 @@ Este arquivo README fornece as instruções necessárias para configurar, execut
 
 Antes de iniciar, verifique se você possui os seguintes pré-requisitos instalados em seu sistema:
 
-1. **Node.js**: Certifique-se de ter o Node.js instalado. Caso não tenha, você pode baixá-lo e instalá-lo a partir do site oficial: [https://nodejs.org/](https://nodejs.org/)
+1. **Node.js**: Certifique-se de ter o Node.js instalado. Caso não tenha, você pode baixá-lo e instalá-lo a partir do site oficial: [https://nodejs.org/](https://nodejs.org/){:target="_blank"}
 
 2. **npm (Node Package Manager)**: O npm é instalado junto com o Node.js. Verifique se você tem a versão mais recente do npm instalada executando o seguinte comando no terminal:
 
@@ -16,7 +18,7 @@ Antes de iniciar, verifique se você possui os seguintes pré-requisitos instala
    npm install -g npm
    ```
 
-3. **Visual Studio Code**: Certifique-se de ter o Visual Studio Code instalado em seu sistema. Você pode baixá-lo a partir do site oficial: [https://code.visualstudio.com/](https://code.visualstudio.com/)
+3. **Visual Studio Code**: Certifique-se de ter o Visual Studio Code instalado em seu sistema. Você pode baixá-lo a partir do site oficial: [https://code.visualstudio.com/](https://code.visualstudio.com/){:target="_blank"}
 
 4. **Extensão Live Server**: Instale a extensão Live Server no Visual Studio Code. Você pode instalá-la através do mercado de extensões do VS Code.
 
