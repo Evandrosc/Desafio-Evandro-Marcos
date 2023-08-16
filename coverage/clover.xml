@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1692143186644" clover="3.2.0">
-  <project timestamp="1692143186644" name="All files">
+<coverage generated="1692159934267" clover="3.2.0">
+  <project timestamp="1692159934267" name="All files">
     <metrics statements="126" coveredstatements="126" conditionals="27" coveredconditionals="27" methods="1" coveredmethods="1" elements="154" coveredelements="154" complexity="0" loc="126" ncloc="126" packages="1" files="3" classes="3"/>
     <file name="caixa-da-lanchonete.js" path="C:\Users\evand\OneDrive\Área de Trabalho\Projetos\Desafio-Evandro-Marcos\src\caixa-da-lanchonete.js">
       <metrics statements="67" coveredstatements="67" conditionals="27" coveredconditionals="27" methods="1" coveredmethods="1"/>
