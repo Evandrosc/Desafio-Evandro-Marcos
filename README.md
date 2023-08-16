@@ -1,4 +1,6 @@
-# Instruções para Executar o Projeto e Testes
+**Link de Deploy**: [https://evandrosc.github.io/Desafio-Evandro-Marcos/](https://evandrosc.github.io/Desafio-Evandro-Marcos/)
+
+# Instruções para Executar o Projeto e Testes Localmente
 
 Este arquivo README fornece as instruções necessárias para configurar, executar o projeto e realizar testes usando a extensão Live Server no Visual Studio Code, juntamente com o framework de testes Jest. Certifique-se de seguir os passos abaixo para garantir uma experiência suave ao trabalhar com o projeto.
 
@@ -40,7 +42,7 @@ Siga as etapas abaixo para executar o projeto usando a extensão Live Server:
 
 1. No Visual Studio Code, abra o arquivo HTML principal do projeto.
 
-2. Localize o botão "Go Live" (ícone de uma seta verde) na barra de status na parte inferior da janela.
+2. Localize o botão "Go Live" na barra de status na parte inferior da janela.
 
 3. Clique no botão "Go Live". Isso iniciará o Live Server e abrirá o projeto em um navegador da web.
 
