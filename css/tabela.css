@@ -1,7 +1,7 @@
 .lista-pedido {
   border-collapse: separate;
   border-spacing: 5px 0;
-  margin: 1rem 0;
+  margin: 1rem .3rem;
 }
 
 .lista-pedido th {
@@ -11,7 +11,7 @@
 }
 
 .lista-pedido th:nth-child(1) {
-  width: 15rem;
+  width: 18rem;
 }
 
 .lista-pedido tr {
@@ -24,7 +24,7 @@
 
 
 .lista-pedido td {
-  padding: 10px;
+  padding: 10px 5px;
   border-bottom: 1px solid var(--cor1);
   text-align: center;
   color: var(--cor1);
